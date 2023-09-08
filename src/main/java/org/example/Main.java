@@ -79,7 +79,19 @@ public class Main {
                           System.out.println("Nao encontrado");
                       }
 
+
+
                 }
+
+                case 5 -> {
+
+                    System.out.println("Listando todos");
+                    System.out.println(vehicleService.listarTodos().toString());
+
+                }
+
+
+
 
             }
 

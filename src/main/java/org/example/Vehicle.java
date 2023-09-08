@@ -81,6 +81,7 @@ public class Vehicle implements Entidade<String> {
                 "nome='" + nome + '\'' +
                 ", placa='" + placa + '\'' +
                 ", tamanho=" + tamanho +
+                ", precoDiaria=" + precoDiaria +
                 ", disponivel=" + disponivel +
                 '}';
     }
