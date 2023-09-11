@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +15,7 @@ public class VehicleService {
     }
 
 
-    public Vehicle RegisterVehicle(String nome, String placa, Tamanho tamanho) throws Exception {
+    public Vehicle RegisterVehicle (String nome, String placa, Tamanho tamanho) throws Exception {
 
         if (existsVehicle(placa)) {
             throw new Exception("veiculo ja registrado");
@@ -39,22 +40,40 @@ public class VehicleService {
         Vehicle updatedVehicle = new Vehicle(placa, nome, tamanho);
         return vehicleRepository.salvar(updatedVehicle);
 
-
     }
 
-    public boolean removeVehicle(String placa) {
+    public boolean removeVehicle (String placa) {
+
         return vehicleRepository.remover(vehicleRepository.buscarPorID(placa));
 
     }
 
+    public List<Vehicle> veiculosDisponiveisPeloNome (String nome) {
+
+        List<Vehicle> veiculosDisponiveis = new ArrayList<>();
+
+        for (Vehicle vehicle : buscarVeiculosPorParteDoNome(nome))
+        {
+
+            if (vehicle.isDisponivel())
+            {
+                veiculosDisponiveis.add(vehicle);
+            }
+
+        }
+
+        return veiculosDisponiveis;
+
+    }
 
     public List<Vehicle> listarTodos() {
+
         return vehicleRepository.listarTodos();
     }
 
-    public Vehicle searchVehicle (String nome) {
+    public List<Vehicle> buscarVeiculosPorParteDoNome (String nome) {
 
-        return vehicleRepository.buscarVeiculoPorNome(nome);
+        return vehicleRepository.buscarVeiculoPorParteDoNome(nome);
 
     }
 

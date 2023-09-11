@@ -1,25 +1,31 @@
 package org.example;
 
- public class VehicleRepository extends AbstractRepository<Vehicle, String> {
+import java.util.ArrayList;
+import java.util.List;
 
+public class VehicleRepository extends AbstractRepository<Vehicle, String> {
 
   private static final VehicleRepository vehicleRepository = new VehicleRepository();
 
 
   public static VehicleRepository getVehicleRepository() {
-   return vehicleRepository;
+
+      return vehicleRepository;
   }
 
-  public Vehicle buscarVeiculoPorNome (String nome) {
+  public List<Vehicle> buscarVeiculoPorParteDoNome (String nome) {
+
+   List<Vehicle> veiculosEncontrados = new ArrayList<>();
 
    for (Vehicle vehicle : listarTodos())
    {
-         if (vehicle.getNome().equalsIgnoreCase(nome))
+         if (vehicle.getNome().toLowerCase().contains(nome.toLowerCase()))
          {
-          return vehicle;
+          veiculosEncontrados.add(vehicle);
          }
    }
-   return null;
+   return veiculosEncontrados;
+
   }
 
 

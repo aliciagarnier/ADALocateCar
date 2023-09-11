@@ -8,7 +8,7 @@ public interface Repository <T extends Entidade <ID>, ID> {
 
     boolean remover(T entidade);
 
-    List<T> listarTodos ();
+    List<T> listarTodos();
 
     T buscarPorID (ID identificador);
     

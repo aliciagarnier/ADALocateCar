@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,10 @@ public class Main {
         System.out.println("Bem-vindo ao ADALocateCar!");
 
         VehicleService vehicleService = new VehicleService(VehicleRepository.getVehicleRepository());
+
+        PessoaJuridicaService pessoaJuridicaService = new PessoaJuridicaService(PessoaJuridicaRepository.getPessoaJuridicaRepository());
+
+        PessoaFisicaService pessoaFisicaService = new PessoaFisicaService(PessoaFisicaRepository.getPessoaFisicaRepository());
 
         Scanner scanner = new Scanner(System.in);
 
@@ -31,13 +36,14 @@ public class Main {
                     System.out.println("Qual a placa do veiculo?");
                     String placa = scanner.nextLine();
                     System.out.println("Qual o tamanho do veiculo?");
+                    Tamanho tamanho = Tamanho.valueOf(scanner.nextLine().toUpperCase().trim());
 
-                    Tamanho tamanho = Tamanho.valueOf(scanner.next().toUpperCase());
+                    vehicleService.RegisterVehicle(nome, placa, tamanho);
 
-                    Vehicle registeredVehicle = vehicleService.RegisterVehicle(nome, placa, tamanho);
+                    System.out.println("Veiculo cadastrado");
 
-                    System.out.println(registeredVehicle.toString());
 
+                    //duvida aqui parra colocar as excecoes depois
 
                 }
 
@@ -60,27 +66,24 @@ public class Main {
                         System.out.println("Nao foi possivel remover, n encontrado");
                     }
 
-
                 }
 
                 case 4 -> {
 
-                    System.out.println("Buscar veiculo por nome");
-                    System.out.println("Qual o nome do veiculo");
+                    System.out.println("Buscar veículos");
+                    System.out.println("Qual o nome do veículo?");
+
                     String nome = scanner.nextLine();
 
-                      Vehicle vehicleFounded = vehicleService.searchVehicle(nome);
+                      List<Vehicle> vehiclesFounded = vehicleService.buscarVeiculosPorParteDoNome(nome);
 
-                      if(vehicleFounded != null) {
-                          System.out.println("Encontrado");
-                          System.out.println(vehicleFounded.toString());
+                      if(!vehiclesFounded.isEmpty()) {
+                          System.out.println("Veículo(s) encontrado(s):");
+                          System.out.println(vehiclesFounded);
 
                       } else {
-                          System.out.println("Nao encontrado");
+                          System.out.println("Nenhum veículo foi encontrado");
                       }
-
-
-
                 }
 
                 case 5 -> {
@@ -90,8 +93,31 @@ public class Main {
 
                 }
 
+                case 6 -> {
 
+                    System.out.println("Testando as listagens de carros disponiveís por parte do nome");
 
+                    System.out.println("Qual veículo você deseja alugar?");
+
+                    String nomeDoVeiculo = scanner.nextLine();
+
+                    System.out.println(vehicleService.veiculosDisponiveisPeloNome(nomeDoVeiculo));
+
+                    // ideia de colocar o status do veículo como "ALUGADO" ou "DISPONÍVEL".
+                    // LISTAR todos os CITROEN por exemplo, e ele escolher o veículo, o identificador.
+
+                }
+
+                case 7 -> {
+
+                    System.out.println("Aluguel de um carro");
+
+                    System.out.println("Qual dos veículos listados você deseja alugar, por favor digite a placa do veículo!");
+
+                    String placaDoVeiculo = scanner.nextLine();
+
+                    Vehicle veiculoASerALugado = VehicleRepository.getVehicleRepository().buscarPorID(placaDoVeiculo);
+                }
 
             }
 

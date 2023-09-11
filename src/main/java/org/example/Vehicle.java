@@ -2,7 +2,7 @@ package org.example;
 
 public class Vehicle implements Entidade<String> {
 
-    private String nome;
+    private String nome; // modelo e marca
     private String placa;
 
     private final Tamanho tamanho;
@@ -38,6 +38,7 @@ public class Vehicle implements Entidade<String> {
     }
 
     public boolean isDisponivel() {
+
         return disponivel;
     }
 
@@ -46,6 +47,7 @@ public class Vehicle implements Entidade<String> {
     }
 
     public Tamanho getTamanho() {
+
         return tamanho;
     }
 
@@ -67,8 +69,6 @@ public class Vehicle implements Entidade<String> {
             return 200.00;
 
         }
-
-
     }
 
     public double getPrecoDiaria() {
