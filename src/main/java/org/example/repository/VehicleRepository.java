@@ -1,4 +1,6 @@
-package org.example;
+package org.example.repository;
+
+import org.example.domain.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;

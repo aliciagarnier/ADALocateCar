@@ -1,6 +1,8 @@
-package org.example;
+package org.example.domain;
 
-public class PessoaJuridica extends Pessoa implements Entidade<String> {
+import org.example.domain.Pessoa;
+
+public class PessoaJuridica extends Pessoa {
         private String cnpj;
 
         public PessoaJuridica(String nome, String cnpj) {
@@ -20,6 +22,7 @@ public class PessoaJuridica extends Pessoa implements Entidade<String> {
         public String toString() {
             return " Nome: " +getNome()+ "\n CNPJ: " +cnpj;
         }
+
 
     @Override
     public String getID() {

@@ -1,6 +1,6 @@
-package org.example;
+package org.example.repository;
 
-import java.util.List;
+import org.example.domain.PessoaFisica;
 
 public class PessoaFisicaRepository extends AbstractRepository<PessoaFisica, String> {
 

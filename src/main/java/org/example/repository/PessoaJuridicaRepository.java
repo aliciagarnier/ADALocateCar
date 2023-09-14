@@ -1,4 +1,6 @@
-package org.example;
+package org.example.repository;
+
+import org.example.domain.PessoaJuridica;
 
 public class PessoaJuridicaRepository extends AbstractRepository<PessoaJuridica, String> {
 
@@ -11,6 +13,7 @@ public class PessoaJuridicaRepository extends AbstractRepository<PessoaJuridica,
    }
 
    public static PessoaJuridicaRepository getPessoaJuridicaRepository () {
+
         return pessoaJuridicaRepository;
    }
     public void listarPessoasJuridicas () {

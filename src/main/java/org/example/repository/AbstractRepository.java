@@ -1,11 +1,13 @@
-package org.example;
+package org.example.repository;
+
+import org.example.domain.Entidade;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractRepository<E extends Entidade<ID>, ID> implements Repository<E, ID>{
+public abstract class AbstractRepository<E extends Entidade<ID>, ID> implements Repository<E, ID> {
 
   private final Map<ID, E> dados = new HashMap<>();
 

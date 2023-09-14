@@ -1,15 +1,17 @@
-package org.example;
+package org.example.domain;
+
+import org.example.domain.Pessoa;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 
-public class PessoaFisica extends Pessoa implements Entidade<String> {
+public class PessoaFisica extends Pessoa {
 
     private String cpf;
     private LocalDate dataDeNascimento;
 
     public PessoaFisica(String nome, String cpf) {
+
         super(nome);
         this.cpf = cpf;
     }
@@ -49,3 +51,5 @@ public class PessoaFisica extends Pessoa implements Entidade<String> {
         return cpf;
     }
 }
+
+

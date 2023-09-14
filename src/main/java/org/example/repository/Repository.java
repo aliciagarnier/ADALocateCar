@@ -1,8 +1,10 @@
-package org.example;
+package org.example.repository;
+
+import org.example.domain.Entidade;
 
 import java.util.List;
 
-public interface Repository <T extends Entidade <ID>, ID> {
+public interface Repository <T extends Entidade<ID>, ID> {
 
     T salvar (T entidade);
 

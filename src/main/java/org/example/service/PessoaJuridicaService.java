@@ -1,4 +1,7 @@
-package org.example;
+package org.example.service;
+
+import org.example.domain.PessoaJuridica;
+import org.example.repository.PessoaJuridicaRepository;
 
 public class PessoaJuridicaService {
 
@@ -33,7 +36,7 @@ public class PessoaJuridicaService {
 
     }
 
-    private boolean existePessoaJuridica (String cpf) {
+    public boolean existePessoaJuridica (String cpf) {
 
        PessoaJuridica pessoaJuridica = pessoaJuridicaRepository.buscarPorID(cpf);
        return pessoaJuridica != null;
@@ -41,12 +44,17 @@ public class PessoaJuridicaService {
     }
 
 
-    private boolean validaCNPJ(String cnpj) {
 
-        return cnpj.length() == 14;
-    }
 
     private boolean validarCadastro (String cnpj) {
-        return validaCNPJ(cnpj) && !existePessoaJuridica(cnpj); // true & true se a o cnpj contem o tamanho adequado e a pessoa nao existe
+        return !existePessoaJuridica(cnpj);
+    }
+
+    public void listarTodasPessoasJuridicas () {
+        pessoaJuridicaRepository.listarTodos();
+    }
+
+    public PessoaJuridicaRepository getPessoaJuridicaRepository() {
+        return pessoaJuridicaRepository;
     }
 }

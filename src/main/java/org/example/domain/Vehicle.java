@@ -1,4 +1,6 @@
-package org.example;
+package org.example.domain;
+
+import org.example.Tamanho;
 
 public class Vehicle implements Entidade<String> {
 
@@ -33,17 +35,28 @@ public class Vehicle implements Entidade<String> {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public boolean isDisponivel() {
 
         return disponivel;
     }
 
-    public void setStatus (boolean status) {
+    public void atualizarStatusDoVeiculoParaAlugado () {
+
+       setStatus(false);
+
+    }
+
+    public void atualizarStatusDoVeiculoParaDisponivel () {
+
+        setStatus(true);
+
+    }
+
+    private void setStatus(boolean status)
+    {
         this.disponivel = status;
+
     }
 
     public Tamanho getTamanho() {

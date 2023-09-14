@@ -1,6 +1,6 @@
-package org.example;
+package org.example.domain;
 
-public abstract class Pessoa  {
+public abstract class Pessoa implements Entidade<String> {
         private String nome;
 
         public Pessoa (String nome){

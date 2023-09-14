@@ -1,4 +1,8 @@
-package org.example;
+package org.example.service;
+
+import org.example.Tamanho;
+import org.example.domain.Vehicle;
+import org.example.repository.VehicleRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +34,8 @@ public class VehicleService {
         Vehicle vehicle = vehicleRepository.buscarPorID(placa);
         return vehicle != null;
     }
+
+
 
     public Vehicle updateVehicle (String placa, String nome, Tamanho tamanho) throws Exception {
 
@@ -76,6 +82,11 @@ public class VehicleService {
         return vehicleRepository.buscarVeiculoPorParteDoNome(nome);
 
     }
+
+    public Vehicle buscarVeiculo (String placa) {
+        return vehicleRepository.buscarPorID(placa);
+    }
+
 
 
 

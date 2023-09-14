@@ -1,4 +1,7 @@
-package org.example;
+package org.example.service;
+
+import org.example.domain.PessoaFisica;
+import org.example.repository.PessoaFisicaRepository;
 
 public class PessoaFisicaService {
     private final PessoaFisicaRepository pessoaFisicaRepository;
@@ -9,10 +12,12 @@ public class PessoaFisicaService {
 
     public PessoaFisica CadastrarPessoaFisica (String nome, String cpf) throws Exception {
 
-        // Logica de validar o CPF. Criar um método?
-
         if (existePessoaFisica(cpf)) {
-            throw new Exception("Pessoa fisica ja cadastrada no sistema");
+            throw new Exception("Pessoa física ja cadastrada no sistema!");
+        }
+
+        if (nome == null || cpf == null) {
+            throw new RuntimeException("Argumentos nulos, não é possível cadastrar");
         }
 
         PessoaFisica novaPessoaFisica = new PessoaFisica(nome, cpf);
@@ -32,13 +37,17 @@ public class PessoaFisicaService {
 
 
     }
-
-    private boolean existePessoaFisica (String cpf) {
-
+    public boolean existePessoaFisica (String cpf) {
         PessoaFisica pessoaFisica = pessoaFisicaRepository.buscarPorID(cpf);
         return pessoaFisica != null;
 
     }
 
+    public void listarTodasPessoasFisicas () {
+        pessoaFisicaRepository.listarPessoasFisicas();
+    }
 
+    public PessoaFisicaRepository getPessoaFisicaRepository() {
+        return pessoaFisicaRepository;
+    }
 }
